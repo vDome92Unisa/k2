@@ -13,6 +13,30 @@
  	<title>Geek Factory - Vendita</title>
     <link rel="stylesheet" href="./css/account.css">
     <link rel="icon" href="./img/icon.png">
+    <script>
+        function sanitizeInput(input) {
+            const regex = /[<>\/'"]/g;
+            return input.replace(regex, "");
+        }
+
+        function validateForm(event) {
+            const nomeProdotto = document.querySelector('input[name="nome"]').value;
+            const descrizione = document.querySelector('textarea[name="descrizione"]').value;
+            
+            if (sanitizeInput(nomeProdotto) !== nomeProdotto || sanitizeInput(descrizione) !== descrizione) {
+                alert("Input contains invalid characters.");
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', validateForm);
+        });
+    </script>
 </head>
 <body>
 	<div class="header">
@@ -76,5 +100,4 @@
 		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
-
 </html>
