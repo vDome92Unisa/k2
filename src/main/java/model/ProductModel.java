@@ -201,7 +201,7 @@ public class ProductModel {
 				DriverManagerConnectionPool.releaseConnection(con);
 			}
 		}
-	} 
+	}
 	
 	public synchronized void updateProduct(ProductBean bean) {
 		String sql = "UPDATE Prodotto SET nome = ?, descrizione = ?, prezzo = ?, speseSpedizione = ?, tag = ?, nomeTipologia = ? WHERE codice = ?";
